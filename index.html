@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script
+      src="https://kit.fontawesome.com/9ca08a6a82.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="shortcut icon"
+      href="https://img.icons8.com/small/64/filled-star.png"
+      type="image/png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,200;9..40,400;9..40,500&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+    <title>Awesome</title>
+    <style type="text/tailwindcss">
+      [x-cloak] {
+        display: none !important;
+      }
+      h1 {
+        font-family: "DM Sans", sans-serif;
+        font-size: 3em;
+        font-weight: 500;
+      }
+      .card-para {
+        font-weight: 500;
+      }
+      .navitems > li > a {
+        @apply h-12 px-3 hover:bg-gray-700 rounded-lg flex items-center gap-2;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-200">
+    <header
+      x-data="{mobilenavOpen:false}"
+      class="sticky top-0 z-50 md:flex items-center justify-between [&>*]:px-10 bg-gray-800 h-14 text-white"
+    >
+      <div class="flex items-center justify-between h-14">
+        <logo>
+          <a href="" class="flex items-center gap-2"
+            ><span
+              ><i
+                class="fa-solid fa-star-of-life text-amber-400 text-xl"
+              ></i></span
+            >Awesome</a
+          ></logo
+        >
+        <mobileicon class="md:hidden">
+          <a
+            @click="mobilenavOpen = !mobilenavOpen"
+            class="h-12 w-12 flex items-center justify-center cursor-pointer hover:bg-gray-700 rounded-lg"
+            ><i
+              class="fa-solid fa-bars select-none"
+              x-show="!mobilenavOpen"
+            ></i>
+            <i
+              x-show="mobilenavOpen"
+              x-cloak
+              class="select-none fa-solid fa-xmark"
+            ></i
+          ></a>
+        </mobileicon>
+      </div>
+
+      <nav
+        class="md:!block bg-gray-800 h-screen w-screen md:h-auto md:w-auto"
+        x-show="mobilenavOpen"
+        x-cloak
+      >
+        <ul
+          class="flex items-center gap-3 navitems flex-col gap-8 md:gap-0 md:flex-row justify-center h-screen -mt-20 md:mt-0"
+        >
+          <li><a href="">Home</a></li>
+          <li>
+            <a href="">Create post</a>
+          </li>
+          <li class="relative" x-data="{dropdownOpen:false}">
+            <a
+              @click="dropdownOpen = !dropdownOpen"
+              @click.away="dropdownOpen = false"
+              class="cursor-pointer select-none"
+              ><img
+                class="h-8 rounded-full object-cover bg-teal-200"
+                src="https://img.icons8.com/doodle/96/bart-simpson.png"
+                alt="bart-simpson"
+              />Abdul
+              <img
+                x-bind:class="dropdownOpen ? 'rotate-180 duration-300':''"
+                class="w-4"
+                src="https://img.icons8.com/small/64/777777/expand-arrow.png"
+                alt="expand-arrow"
+              />
+            </a>
+            <div
+              x-show="dropdownOpen"
+              x-transition:enter="duration-250 ease-out"
+              x-transition:enter-start="opacity-0 -translate-y-5 scale-90"
+              x-transition:enter-end="opacity-100 -translate-y-0 scale-100"
+              x-cloak
+              class="absolute right-0 bg-white text-slate-900 shadow rounded-lg w-40 rounded-md p-2"
+            >
+              <ul class="">
+                <li class="hover:bg-amber-100 p-2">
+                  <a href="">My Profile</a>
+                </li>
+                <li class="hover:bg-amber-100 p-2"><a href="">Log Out</a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <!-- hearo section -->
+    <hero
+      class="block bg-gray-700 text-white text-center py-24 px-10 bg-cover bg-center bg-[url('https://images.unsplash.com/photo-1675062610983-b4c90b86d4d1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')]"
+    >
+      <h1>Awesome Photo & Captions</h1>
+      <p>Share your favorite photos from Flickr and add a great caption</p>
+      <a
+        href=""
+        class="px-10 py-2 bg-amber-400 text rounded-sm mt-8 inline-block"
+        >Get started</a
+      >
+    </hero>
+    <content class="grid grid-cols-3 max-w-7xl mx-auto mt-6">
+      <main class="col-span-2 mx-[10%] p-4">
+        <article
+          class="rounded-md bg-white relative pb-4 border-2 border-gray-200"
+        >
+          <div class="flex items-center justify-between px-4 h-14">
+            <h3 class="text-lg font-bold">Little Jandow</h3>
+            <div class="text-sm text-gray-500">
+              Unsplash @ <a href="" class="hover:underline">Adm Devis</a>
+            </div>
+          </div>
+          <figure>
+            <a href=""
+              ><img
+                class="w-full"
+                src="https://images.unsplash.com/photo-1691512938804-d82fd0d0dd7b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80"
+                alt=""
+            /></a>
+          </figure>
+          <div class="p-4 pb-2">
+            <a href="" class="flex items-center gap-2 mb-4"
+              ><i class="fa-regular fa-face-smile"></i><span>Adam</span></a
+            >
+            <p class="text-2xl mb-8 px-3 card-para">
+              Landscape ,desert environment
+            </p>
+            <div class="flex items-center gap-2 px-4 text-sm mb-8">
+              <a
+                href=""
+                class="bg-gray-200 rounded-full px-3 py-1 hover:bg-gray-400 hover:text-white"
+                >Desert Images</a
+              ><a
+                href=""
+                class="bg-gray-200 rounded-full px-3 py-1 hover:bg-gray-400 hover:text-white"
+                >Landscape</a
+              ><a
+                href=""
+                class="bg-gray-200 rounded-full px-3 py-1 hover:bg-gray-400 hover:text-white"
+                >Sunrise</a
+              >
+            </div>
+            <div class="flex items-center justify-between text-sm px-4">
+              <a href="" class="font-bold hover:underline"
+                >Comments
+                <span class="font-light text-gray-500 ml-2">3</span></a
+              >
+              <div class="flex items-center gap-4 [&>a:hover]:underline">
+                <a href="" class="flex gap-2 items-center">
+                  <i class="fa-solid fa-thumbs-up text-red-400"></i> Likes</a
+                ><a href="">Edit</a><a href="">Delete</a>
+              </div>
+            </div>
+          </div>
+        </article>
+      </main>
+      <aside class="col-span-1 mr-[20%]">
+        <section class="rounded-md p-4 bg-white">
+          <h2 class="text-xl font-bold mb-[0.75] text-slate-800">Categories</h2>
+          <ul>
+            <li
+              class="py-2 text-slate-700 hover:bg-amber-100 rounded-md transition duration-250 px-4"
+            >
+              <a href="" class="flex gap-2 items-center">
+                <i class="fa-regular fa-image"></i>Landscape</a
+              >
+            </li>
+            <li
+              class="py-2 text-slate-700 hover:bg-amber-100 rounded-md transition duration-250 px-4"
+            >
+              <a href="" class="flex gap-2 items-center"
+                ><i class="fa-solid fa-users"></i>People</a
+              >
+            </li>
+            <li
+              class="py-2 text-slate-700 hover:bg-amber-100 rounded-md transition duration-250 px-4"
+            >
+              <a href="" class="flex gap-2 items-center"
+                ><i class="fa-solid fa-mountain-sun"></i>Desert</a
+              >
+            </li>
+            <li
+              class="py-2 text-slate-700 hover:bg-amber-100 rounded-md transition duration-250 px-4"
+            >
+              <a href="" class="flex gap-2 items-center"
+                ><i class="fa-solid fa-sun-plant-wilt"></i>Sunrise</a
+              >
+            </li>
+
+            <li
+              class="py-2 text-slate-700 hover:bg-amber-100 rounded-md transition duration-250 px-4"
+            >
+              <a href="" class="flex gap-2 items-center"
+                ><i class="fa-solid fa-circle-half-stroke"></i>Balack & White</a
+              >
+            </li>
+          </ul>
+        </section>
+        <section class="rounded-md p-4 bg-white mt-8">
+          <h2 class="text-xl font-bold mb-[0.75] text-slate-800 mb-5">
+            Top Photos
+          </h2>
+          <ul>
+            <li
+              class="py-2 text-slate-700 hover:bg-amber-100 rounded-md transition duration-250 px-4"
+            >
+              <a href="" class="flex gap-2 items-center"
+                ><img
+                  class="w-10 h-10 rounded-lg object-cover mr-2"
+                  src="https://userstock.io/data/wp-content/uploads/2017/07/william-stitt-119525-300x300.jpg"
+                  alt=""
+                /><span class="text-sm">Homer (5 likes)</span>
+              </a>
+            </li>
+            <li
+              class="py-2 text-slate-700 hover:bg-amber-100 rounded-md transition duration-250 px-4"
+            >
+              <a href="" class="flex gap-2 items-center">
+                <img
+                  class="w-10 h-10 rounded-lg object-cover mr-2"
+                  src="https://userstock.io/data/wp-content/uploads/2017/07/christian-acosta-195215-300x300.jpg"
+                  alt=""
+                />
+                <span class="text-sm">Annah (5 likes)</span></a
+              >
+            </li>
+          </ul>
+        </section>
+      </aside>
+    </content>
+  </body>
+</html>
